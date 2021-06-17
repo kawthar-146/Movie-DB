@@ -12,3 +12,16 @@ app.listen(PORT, function () {
 app.get('/', function (req, res) {
     res.send('<h1>ok</h1>');
   }); 
+
+  app.get('/test',(req,res) => {
+    const response = {
+           status:200, message:"ok"}
+       res.send(response);
+ });
+
+var x = new Date();
+app.get('/time',(req,res) => {
+    const response = {
+      status:200, message: x.getHours() + ":" + x.getSeconds()}
+      res.send(response);
+       }); 
