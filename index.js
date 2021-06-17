@@ -123,7 +123,7 @@ app.get('/search',(req,res) => {
                  });
 
 
-     app.get('/movies/add', (req, res) => {
+     app.post('/movies/add', (req, res) => {
           const newTitle=req.query.title;
           const newYear= req.query.year;
           const newRating=req.query.rating;
@@ -146,16 +146,16 @@ app.get('/search',(req,res) => {
           
                         });
 
-                        app.get('/movies/delete/:id', (req, res) => {
-                            const id = req.params.id;
-                                if ( id  >= movies.legnth || id < 0) {
+     app.delete('/movies/delete/:id', (req, res) => {
+                  const id = req.params.id;
+                  if ( id  >= movies.legnth || id < 0) {
                 
-                                    const response = {
-                                        status:404, error:true, message: "the movie " + id + " does not exist"};
+                   const response = {
+                     status:404, error:true, message: "the movie " + id + " does not exist"};
                 
                 
-                                    res.status(404);
-                                    res.send(response);
+                     res.status(404);
+                     res.send(response);
                                 }
                                 else {
                                     movies.splice(id, 1);
@@ -164,7 +164,7 @@ app.get('/search',(req,res) => {
                                 }
                             });
 
-  app.get('/movies/update/:id', (req, res) => {
+  app.put('/movies/update/:id', (req, res) => {
             const id = req.params.id;
             const newTitle = req.query.title;
             const newRating = req.query.rating;
